@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+	<category>
+	    <pattern>HELLO</pattern>
+	    <template>
+	        <delay>1.5</delay>
+	        Hello! Welcome to the Computer Science Student Assistance Program. How can I help you today?
+	        <button>
+	            <text>Tell Me Job Options</text>
+	            <postback>JOB OPTIONS</postback>
+	        </button>
+	        <button>
+	            <text>Help Me Choose a Career Path</text>
+	            <postback>HELP ME CHOOSE A CAREER PATH</postback>
+	        </button>
+	    </template>
+	</category>
+	
+	<!-- Branches the conversation to the computer science job options topic -->
+	<category>
+        <pattern>^ JOB OPTIONS</pattern>
+        <template>
+            <delay>1.5</delay>
+            <think><set name = "topic">jobs</set></think>
+            There are so many different jobs out there for computer science majors. Here are the 5 most popular:
+            <br></br><br></br>
+            1) Software Engineer<br></br>
+            2) Data Scientist<br></br>
+            3) Computer Engineer<br></br>
+            4) Network Administrator<br></br>
+            5) Full Stack Developer<br></br>
+            <br></br><br></br>
+            Type in any of the above jobs to learn more about them.
+        </template>
+    </category>
+    
+    <!-- Branches the conversation to the career path finder topic -->
+    <category>
+        <pattern>^ CAREER PATH</pattern>
+        <template>
+            <delay>1.5</delay>
+            <think><set name = "topic">pathfinder</set></think>
+            In order to find the career path best suited to you, I need to know more about you. Are you more interested in programming or design?
+            <button>
+                <text>Programming</text>
+                <postback>PROGRAMMING</postback>
+            </button>
+            <button>
+                <text>Design</text>
+                <postback>DESIGN</postback>
+            </button>
+        </template>
+    </category>
+    
+    
+    <!-- UDC for unrecognized input -->
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <delay>1.5</delay>
+            Sorry, I don't recognize that response. Shall we go back to the beginning?
+            <button>
+                <text>YES</text>
+                <postback>HELLO</postback>
+            </button>
+        </template>
+    </category>
+    
+    
+    <!-- Within the topic "jobs", users can ask the chatbot about any of the aforementioned
+         computer science careers. It willl display a description of the job and links to
+         articles about the job. -->
+    <topic name = "jobs">
+        
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <delay>1.5</delay>
+                Sorry, I don't recognize that response. Shall we go back to the beginning? 
+                <button>
+                    <text>YES</text>
+                    <postback>MAIN</postback>
+                </button>
+            </template>
+        </category>
+
+        <category>
+            <pattern>MAIN</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                <srai>HELLO</srai>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>YES</pattern>
+            <template><srai>MAIN</srai></template>
+        </category>
+        
+        <category>
+            <pattern>^ SOFTWARE ENGINEER</pattern>
+            <template>
+                <delay>1.5</delay>
+                 Software engineers develop programs and operating systems for computers.
+                They work with system programmers, analysts, and other engineers to
+                design systems, project capabilities, and determine performance interfaces.
+                Depending on the type of company they work for, software engineers will create 
+                original code for software and applications. They also build reusable code for future use.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/software-engineer/</url>
+                </link>
+                <br></br>
+                <link>
+                    <text>Click here to explore other jobs in computer science!</text>
+                    <url>https://www.computerscience.org/careers/</url>
+                </link>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>^ DATA SCIENTIST</pattern>
+            <template>
+                <delay>1.5</delay>
+                A data scientist's primary goal is to use data to answer questions, make predictions,
+                and solve problems. Data science professionals collect, clean, and analyze data. 
+                They use computer science techniques and tools to create algorithms, find patterns, 
+                ask questions, and launch experiments. Data scientists also write reports and deliver 
+                presentations based on their findings.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/data-science/how-to-become/</url>
+                </link>
+                <br></br>
+                <link>
+                    <text>Click here to explore other jobs in computer science!</text>
+                    <url>https://www.computerscience.org/careers/</url>
+                </link>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>^ COMPUTER ENGINEER</pattern>
+            <template>
+                <delay>1.5</delay>
+                Computer engineers research, design, develop, and test computer systems. Computer 
+                engineering is distinct from computer science because it focuses on hardware and 
+                computer design.By creating and improving devices and programs, these technology 
+                professionals help keep the world working safer, smarter, and faster.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/computer-engineering/</url>
+                </link>
+                <br></br>
+                <link>
+                    <text>Click here to explore other jobs in computer science!</text>
+                    <url>https://www.computerscience.org/careers/</url>
+                </link>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>^ NETWORK ADMINISTRATOR</pattern>
+            <template>
+                <delay>1.5</delay>
+                Network administrators design, manage, and maintain technological networks. 
+                They work within organizations and government agencies to oversee local area networks, 
+                wide area networks, network segments, and other data communication systems as needed.
+                Network administrators provide support and oversight alike, working closely with colleagues 
+                to explain how to use data storage and communication networks and ensure efficiency. 
+                Often part of a larger, computer-related operational staff, network administrators may 
+                supervise computer support and computer systems specialists.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/network-administrator/</url>
+                </link>
+                <br></br>
+                <link>
+                    <text>Click here to explore other jobs in computer science!</text>
+                    <url>https://www.computerscience.org/careers/</url>
+                </link>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>^ FULL STACK DEVELOPER</pattern>
+            <template>
+                <delay>1.5</delay>
+                Full-stack developers are unique from other computer science professionals because of their broad, 
+                versatile skill sets.Instead of specializing in back-end (server side) or front-end (client side) 
+                development, these developers work on the entire "stack" of applications and websites. They can 
+                often create an entire web application and are responsible for the entire software lifecycle. 
+                Typical responsibilities include writing code, testing code, and analyzing user needs. Full-stack 
+                developers often work remotely as freelancers, interacting with other developers and UX/UI designers.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/web-development/full-stack-developer/how-to-become/</url>
+                </link>
+                <br></br>
+                <link>
+                    <text>Click here to explore other jobs in computer science!</text>
+                    <url>https://www.computerscience.org/careers/</url>
+                </link>
+            </template>
+        </category>
+        
+    </topic>
+    
+    <!-- Within the topic "pathfinder" is a series of questions that branch into different categories
+         in order to figure out what career path best suits the student based on their preferences and strengths.
+         At the end of a branch, the best-suited career is presented with a description and a link to learn more. -->
+    <topic name = "pathfinder">
+        
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <delay>1.5</delay>
+                Sorry, I didn't recognize that. Please answer by clicking on or typing in one of the options listed,
+                or type "Quit" to go back to the beginning
+            </template>
+        </category>
+        
+        <category>
+            <pattern>QUIT</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                <srai>HELLO</srai>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>PROGRAMMING</pattern>
+            <template>
+                <delay>1.5</delay>
+                Got it, you're a programmer. Do you prefer working on systems or on applications?
+                <button>
+                    <text>Systems</text>
+                    <postback>SYSTEMS</postback>
+                </button>
+                <button>
+                    <text>Applications</text>
+                    <postback>APPLICATIONS</postback>
+                </button>
+                </template>
+        </category>
+        
+        <category>
+            <pattern>SYSTEMS</pattern>
+            <template>
+                <delay>1.5</delay>
+                Alright systems. Do you prefer to do system architecture or data management?
+                <button>
+                    <text>System Architecture</text>
+                    <postback>SYSTEM ARCHITECTURE</postback>
+                </button>
+                <button>
+                    <text>Data Management</text>
+                    <postback>DATA MANAGEMENT</postback>
+                </button>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>APPLICATIONS</pattern>
+            <template>
+                <delay>1.5</delay>
+                Alright applications. Do you prefer working on utility software or video games?
+                <button>
+                    <text>Utility Software</text>
+                    <postback>UTILITY SOFTWARE</postback>
+                </button>
+                <button>
+                    <text>Video Games</text>
+                    <postback>VIDEO GAMES</postback>
+                </button>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>DESIGN</pattern>
+            <template>
+                <delay>1.5</delay>
+                Got it, you're a designer. Do you prefer working on software or hardware?
+                <button>
+                    <text>Software</text>
+                    <postback>SOFTWARE</postback>
+                </button>
+                <button>
+                    <text>Hardware</text>
+                    <postback>HARDWARE</postback>
+                </button>
+                </template>
+        </category>
+        
+        <category>
+            <pattern>SOFTWARE</pattern>
+            <template>
+                <delay>1.5</delay>
+                Alright software. Do you prefer to do graphic design or application design?
+                <button>
+                    <text>Graphic Design</text>
+                    <postback>GRAPHIC DESIGN</postback>
+                </button>
+                <button>
+                    <text>Application Design</text>
+                    <postback>APPLICATION DESIGN</postback>
+                </button>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>HARDWARE</pattern>
+            <template>
+                <delay>1.5</delay>
+                Alright hardware. Do you prefer working on computer hardware or network hardware?
+                <button>
+                    <text>Computer Hardware</text>
+                    <postback>COMPUTER HARDWARE</postback>
+                </button>
+                <button>
+                    <text>Network Hardware</text>
+                    <postback>NETWORK HARDWARE</postback>
+                </button>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>SYSTEM ARCHITECTURE</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Systems Analyst.
+                <br></br><br></br>
+                Computer systems analysts, or system architects, work with companies, institutions, 
+                and independent clients. They survey and diagnose database program issues, resolve 
+                user issues, and advise management about systems innovations to improve productivity. 
+                Whether formally associated with corporations or acting as freelance consultants, 
+                systems analysts work with program users and platforms to gauge issues. This role 
+                requires communication and interpersonal skills, plus an understanding of standard 
+                and new technologies.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/systems-analyst/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>DATA MANAGEMENT</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Data Scientist.
+                <br></br><br></br>
+                A data scientist's primary goal is to use data to answer questions, make predictions,
+                and solve problems. Data science professionals collect, clean, and analyze data. 
+                They use computer science techniques and tools to create algorithms, find patterns, 
+                ask questions, and launch experiments. Data scientists also write reports and deliver 
+                presentations based on their findings.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/data-science/how-to-become/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>UTILITY SOFTWARE</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Software Engineer.
+                <br></br><br></br>
+                Software engineers develop programs and operating systems for computers.
+                They work with system programmers, analysts, and other engineers to
+                design systems, project capabilities, and determine performance interfaces.
+                Depending on the type of company they work for, software engineers will create 
+                original code for software and applications. They also build reusable code for future use.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/software-engineer/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>VIDEO GAMES</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Video Game Designer.
+                <br></br><br></br>
+                Video game designers create the defining features of video games, including 
+                characters, objectives, obstacles, levels and settings, and narratives. 
+                Video game design is a cross-disciplinary field that incorporates computer science 
+                and computer programming, graphic design, user experience, and creative writing. 
+                Video game designers create new video games and improve existing ones. 
+                They interact with many other professionals and teams, including technical and creative personnel.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/video-game-designer/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>GRAPHIC DESIGN</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Web Developer.
+                <br></br><br></br>
+                Web development includes building technical front-end and/or back-end code that informs site 
+                functionality. Web developers may work exclusively on front-end code, back-end code, or both, 
+                and many modern jobs also require overlap in web design. These professionals may work independently 
+                on a freelance basis or with marketing or IT departments.
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/web-developer/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>APPLICATION DESIGN</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Full-Stack Developer.
+                <br></br><br></br>
+                Full-stack developers are unique from other computer science professionals because of their broad, 
+                versatile skill sets.Instead of specializing in back-end (server side) or front-end (client side) 
+                development, these developers work on the entire "stack" of applications and websites. They can 
+                often create an entire web application and are responsible for the entire software lifecycle. 
+                Typical responsibilities include writing code, testing code, and analyzing user needs. Full-stack 
+                developers often work remotely as freelancers, interacting with other developers and UX/UI designers.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/web-development/full-stack-developer/how-to-become/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>COMPUTER HARDWARE</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Computer Engineer.
+                <br></br><br></br>
+                Computer engineers research, design, develop, and test computer systems. Computer 
+                engineering is distinct from computer science because it focuses on hardware and 
+                computer design.By creating and improving devices and programs, these technology 
+                professionals help keep the world working safer, smarter, and faster.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/computer-engineering/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>NETWORK HARDWARE</pattern>
+            <template>
+                <delay>1.5</delay>
+                <think><set name = "topic"></set></think>
+                You are best-suited for a career as a Network Administrator.
+                <br></br><br></br>
+                Network administrators design, manage, and maintain technological networks. 
+                They work within organizations and government agencies to oversee local area networks, 
+                wide area networks, network segments, and other data communication systems as needed.
+                Network administrators provide support and oversight alike, working closely with colleagues 
+                to explain how to use data storage and communication networks and ensure efficiency. 
+                Often part of a larger, computer-related operational staff, network administrators may 
+                supervise computer support and computer systems specialists.
+                <br></br><br></br>
+                <link>
+                    <text>Click Here to Learn More!</text>
+                    <url>https://www.computerscience.org/careers/network-administrator/</url>
+                </link>
+                <br></br><br></br>
+                Type in "Hello" to start over.
+            </template>
+        </category>
+        
+    
+    </topic>
+
+</aiml>
